@@ -1,0 +1,92 @@
+﻿@model EmployeeToReturnDto
+@{
+    ViewData["Title"] = "Details";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #004080, #00c2ff);
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #00c2ff;
+        }
+
+        table {
+            width: 100%;
+            max-width: 600px; 
+            margin: 20px auto;
+            border-collapse: collapse; 
+            background-color: rgba(0, 31, 63, 0.8); 
+            border-radius: 10px;
+            overflow: hidden; 
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left; 
+            border-bottom: 1px solid #00c2ff; 
+        }
+
+        th {
+            background-color: #001f3f; 
+            color: #ffffff;
+        }
+
+        tr:hover {
+            background-color: rgba(0, 200, 255, 0.3); 
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Details</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Property</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Name:</strong></td>
+                <td>@Model.Name</td>
+            </tr>
+            <tr>
+                <td><strong>Age:</strong></td>
+                <td>@Model.Age</td>
+            </tr>
+            <tr>
+                <td><strong>Hiring Date:</strong></td>
+                <td>@Model.HiringDate.ToString("yyyy-MM-dd")</td>
+            </tr>
+            <tr>
+                <td><strong>Employee Type:</strong></td>
+                <td>@Model.EmployeeType</td>
+            </tr>
+            <tr>
+                <td><strong>Email:</strong></td>
+                <td>@Model.Email</td>
+            </tr>
+            <tr>
+                <td><strong>Gender:</strong></td>
+                <td>@Model.Gender</td>
+            </tr>
+        </tbody>
+    </table>
+    <a asp-action="Index" class="btn btn-light">Back</a>
+</body>
+</html>

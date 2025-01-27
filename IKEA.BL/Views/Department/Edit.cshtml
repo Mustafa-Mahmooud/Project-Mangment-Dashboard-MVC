@@ -1,0 +1,111 @@
+﻿@using IKEA.PL.ViewModels.Departments
+@model DepartmentEditViewModel
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Department</title>
+    <style>
+        h1 {
+            background: linear-gradient(135deg, #004080, #00c2ff);
+            color: #ffffff;
+            padding: 1rem 2rem;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            margin: 20px auto;
+            width: fit-content;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            font-weight: bold;
+            color: #004080;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ccd0d5;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            font-size: 1rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+            .form-control:focus {
+                border-color: #00c2ff;
+                box-shadow: 0 2px 8px rgba(0, 194, 255, 0.3);
+                outline: none;
+            }
+
+        .text-danger {
+            color: #ff4d4f;
+            font-size: 0.875rem;
+        }
+
+        .btn-submit {
+            background-color: #004080;
+            color: #ffffff;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+            .btn-submit:hover {
+                background-color: #00c2ff;
+            }
+    </style>
+</head>
+<body>
+
+    <h1>Edit Department</h1>
+
+    <form asp-action="Edit" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="form-group">
+            <label class="form-label" asp-for="Code">Code</label>
+            <input asp-for="Code" class="form-control" />
+            <span asp-validation-for="Code" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label" asp-for="Name">Name</label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label" asp-for="Description">Description</label>
+            <textarea asp-for="Description" class="form-control"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label" asp-for="CreationDate">Creation Date</label>
+            <input type="date" asp-for="CreationDate" class="form-control" />
+        </div>
+
+        <button type="submit" class="btn-submit">Submit</button>
+        <a asp-action="Index" class="btn btn-light">Cancel</a>
+    </form>
+
+</body>
+</html>
+@section ValidationSection {
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

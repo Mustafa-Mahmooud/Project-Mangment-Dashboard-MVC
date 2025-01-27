@@ -1,0 +1,135 @@
+﻿@{
+    ViewData["Title"] = "Department";
+}
+<form asp-action="Index" method="get" class="mt-5 row justify-content-center align-items-center">
+    <div class="row col-8 offset-1">
+        <div class="col-8">
+            <input type="text" name="search" class="form-control" id="searchInp" placeholder="Search By Name" />
+        </div>
+        <div class="col-4">
+            <input type="submit" value="Search" class="btn btn-success" />
+        </div>
+    </div>
+</form>
+@model IEnumerable<DepartmentsToReturnDto>
+@if (!string.IsNullOrEmpty(TempData["Message"] as string))
+{
+    <div class=" alert alert-success">
+        @TempData["Message"]
+    </div>
+}
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <style>
+        
+        body {
+            background: linear-gradient(to right, #4facfe, #00f2fe);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            color: #333;
+        }
+
+       
+        .content-card {
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 900px;
+        }
+
+       
+        .table-responsive {
+            margin-top: 20px;
+        }
+
+        h1 {
+            color: #333;
+            font-weight: bold;
+        }
+
+        .btn {
+            margin: 0.2rem;
+        }
+
+         
+            .btn:hover {
+                opacity: 0.9;
+                transition: opacity 0.3s;
+            }
+    </style>
+</head>
+
+<body>
+    <div class="content-card">
+        <h1 class="text-center">@ViewData["Title"]</h1>
+
+        <div class="text-center my-4">
+            <a asp-controller="Department" asp-action="Create" class="btn btn-primary">
+                <i class="fas fa-plus"></i> Create New Department
+            </a>
+        </div>
+
+        @if (Model is not null && Model.Count() > 0)
+        {
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped table-hover mt-4">
+                    <thead class="text-center table-dark">
+                        <tr>
+                            <th>@Html.DisplayNameFor(d => d.Code)</th>
+                            <th>@Html.DisplayNameFor(d => d.Name)</th>
+                            <th>@Html.DisplayNameFor(d => d.CreationDate)</th>
+                            <th>Details</th>
+                            <th>Update</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-center">
+                        @foreach (var department in Model)
+                        {
+                            <tr>
+                                
+                                <td>@department.Code</td>
+                                <td>@department.Name</td>
+                                <td>@department.CreationDate.ToString("dd/MM/yyyy")</td>
+                                <td>
+                                    <a asp-controller="Department" asp-action="Details" asp-route-id="@department.Id" class="btn btn-warning btn-sm">
+                                        <i class="fas fa-eye"></i> Details
+                                    </a>
+                                </td>
+                                <td>
+                                    <a asp-controller="Department" asp-action="Edit" asp-route-id="@department.Id" class="btn btn-success btn-sm">
+                                        <i class="fas fa-edit"></i> Update
+                                    </a>
+                                </td>
+                                <td>
+                                    <a asp-controller="Department" asp-action="Delete" asp-route-id="@department.Id" class="btn btn-danger btn-sm">
+                                        <i class="fas fa-trash"></i> Delete
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-info text-center mt-5">
+                <h4>There Are No Departments :(</h4>
+            </div>
+        }
+    </div>
+</body>
+
+</html>

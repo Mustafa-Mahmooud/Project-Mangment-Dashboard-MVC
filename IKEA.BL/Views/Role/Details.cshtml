@@ -1,0 +1,35 @@
+﻿@using IKEA.PL.ViewModels.Role
+@model RoleViewModel
+
+@{
+    ViewData["Title"] = "User Details";
+}
+
+<h1 class="text-center mb-4">@ViewData["Title"]</h1>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-md-8 offset-md-2">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="card-title">User Information</h3>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label class="form-label"><strong>Role Name:</strong></label>
+                        <input type="text" class="form-control-plaintext" readonly value="@Model.RoleName" />
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label"><strong>Id:</strong></label>
+                        <input type="text" class="form-control-plaintext" readonly value="@Model.Id" />
+                    </div>
+                </div>
+                <div class="card-footer text-center">
+                    <a href="@Url.Action("Index", "Role")" class="btn btn-secondary">Back to List</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
