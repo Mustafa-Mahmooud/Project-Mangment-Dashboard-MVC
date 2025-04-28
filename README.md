@@ -36,7 +36,5 @@ A robust enterprise-grade application built with ASP.NET MVC, implementing moder
 - SQL Server
 - Visual Studio 2022 (or Rider/VSCode)
 
-### Installation
-1. Clone the repo
-   ```bash
-   git clone https://github.com/your-repo/company-management.git
+
+
